@@ -12,6 +12,8 @@ header{
     display: flex;
     height: 40px;
     background-color: #171738;
+    position: fixed;
+    width: 100%;
 }
 .cadastro{
     display:flex;
@@ -63,7 +65,9 @@ nav .active a, nav a:hover{
     align-items: center;
 }
 
-
+.conteudo{
+    height: 100vh;
+}
 
 
 .cor1{
@@ -95,4 +99,22 @@ width: 50px;
 background-color: #14C310;
 height: 50px;
 width: 50px;
+}
+
+
+
+.fraseprincipal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+}
+
+.fraseprincipal h1{
+    text-align: center;
+    align-content: center;
+
 }
