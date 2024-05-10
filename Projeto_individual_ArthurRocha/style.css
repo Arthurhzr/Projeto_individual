@@ -125,6 +125,148 @@ width: 50px;
 .conteudo{
     background-color: #171738;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
 }
+
+.div_sobre{
+    display: flex;
+    flex-direction: row;
+    color: #DFF3E4;
+    margin-bottom: 50px;
+}
+
+.divimg p{
+    margin-left: 50px;
+}
+
+.div_sobre img{
+    height: 350px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.div_sobre2{
+    margin-top: 40px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    color: #DFF3E4;
+}
+
+.div_sobre2 button{
+    justify-self: right;
+}
+
+.div_sobre2 img{
+    height: 350px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.divtxt{
+display: flex;
+flex-direction: column;
+}
+.divtxt h1 {
+    color: #14C310;
+    margin-top: 50px;
+}
+
+.divtxt p {
+    color: #DFF3E4;
+    font-size: 25px;
+}
+
+.divtxt2{
+    display: flex;
+    flex-direction: column;
+    
+    }
+    .divtxt2 h1 {
+        text-align: left;
+        color: #14C310;
+        margin-top: 50px;
+    }
+    
+    .divtxt2 p {
+        color: #DFF3E4;
+        font-size: 25px;
+    }
+
+    .divtxt2 .btn_inicio {
+        align-self: center;
+    }
+
+
+.btn_inicio {
+    font-size: 20px;
+    width: 250px;
+    color: white;
+    background-color: #14C310;
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font: bolder;
+}
+
+.btn_inicio:hover{
+    
+    background-color: #7180B9;
+}
+
+.conteudo h1 {
+    text-align: center;
+    color: #14C310;
+    margin-top: 70px;
+}
+
+.charcard img{
+    height: 400px;
+}
+
+.charcard{
+    margin-right: 15px;
+    margin: 15px;
+}
+
+.charoll{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    background-color: #3423A6;
+}
+
+.charcard {
+    position: relative;
+    display: inline-block;
+  }
+
+  .chartxt h2 {
+    color: #14C310;
+  }
+
+  .chartxt p{
+    color: #DFF3E4;
+  }
+
+  .chartxt {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .charcard:hover .chartxt {
+    opacity: 1;
+  }
+
+  
