@@ -229,10 +229,7 @@ flex-direction: column;
     height: 400px;
 }
 
-.charcard{
-    margin-right: 15px;
-    margin: 15px;
-}
+
 
 .charoll{
     display: flex;
@@ -241,10 +238,12 @@ flex-direction: column;
     background-color: #7180B9;
 }
 
-.charcard {
+.charcard{
+    margin-right: 15px;
+    margin: 15px;
     position: relative;
     display: inline-block;
-  }
+}
 
   .chartxt h2 {
     color: #14C310;
@@ -265,8 +264,13 @@ flex-direction: column;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
+
   .charcard:hover .chartxt {
     opacity: 1;
+  }
+
+  .chartxt p{
+    padding: 15px;
   }
 
   
