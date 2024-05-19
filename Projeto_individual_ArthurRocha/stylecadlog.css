@@ -1,3 +1,176 @@
+html{
+width: 100%;
+height: 100%;
+}
+
 body{
-    background-image: url(imagens/xmen_fundo2.jpg);
+    background-image: url(imagens/xmenfundo4.jpeg);
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    height: 40px;
+    background: linear-gradient(to top, #0c0c1d, #171738);
+    position: fixed;
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+}
+
+.cadastro{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin-top: 55px;
+}
+
+.imagemLogo{
+    width: 200px;
+}
+
+nav ul, nav li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul{
+    display: flex;
+}
+
+nav a{
+    display: block;
+    padding: 9px;
+    text-decoration: none;
+    color: #14C310;
+}
+
+nav .agora a, nav a:hover{
+    background-color: #14C310;
+    color: #171738;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.div_conteudo {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.div_central {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: row;
+    color: #DFF3E4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px #00000048;
+}
+
+.div_cadastro{
+    background: linear-gradient(to top right, #171738, #711997,  #032dd4);
+    padding: 15px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.div_login{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(52, 35, 166, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    padding-bottom: 50px;
+    justify-content: space-between;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.input {
+    height: 45px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: #DFF3E4;
+    color: #171738;
+    transition: .5s ease;
+    text-align: center;
+    width: 300px;
+    font-size: 20px;
+  }
+  
+  .input::placeholder {
+    color: #711997;
+    opacity: 0.3;
+  }
+
+  .input:focus, input:hover {
+    outline: none;
+    border-color: #711997;
+    background-color: #fff;
+    box-shadow: 0 0 10px 5px #3423A6;
+  }
+  
+  
+
+.cores{
+background-color: #171738;
+background-color: #2E1760;
+background-color: #3423A6;
+background-color: #7180B9;
+background-color: #DFF3E4;
+background-color: #14C310;
+}
+
+.btn_style {
+    font-size: 20px;
+    width: 250px;
+    color: white;
+    background-color: #14C310;
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font: bolder;
+    margin: 15px;
+}
+
+.btn_style:hover{
+    
+    background-color: #7180B9;
 }

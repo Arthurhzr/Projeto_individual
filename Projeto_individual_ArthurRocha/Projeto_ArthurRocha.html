@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>individual do arthur</title>
+    <title>Página inicial</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li class="active"><a href="index.html">Página Inicial</a></li>
-                        <li><a href="">Sobre</a></li>
-                        <li><a href="quiz.html">Quiz</a></li>
-                        <li><a href="transicao_logcad.html">Entrar</a></li>
+                        <li class="agora"><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
+                        <li><a href=""><b>Sobre</b></a></li>
+                        <li><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li><a href="login.html"><b>Entrar</b></a></li>
                     </ul>
                 </nav>
             </div>
@@ -42,8 +42,7 @@
     <div class="conteudo" id="div_conteudo">
 
         <div id="div_sobre" class="div_sobre">
-            <div class="divimg"><img src="imagens/xmen_dauterman.jpg" alt="">
-            <p>Russell Dauterman's 'X-Men' '97 #1 Cover</p></div>
+            <div class="divimg"><img src="imagens/xmen_dauterman.jpg" alt=""></div>
             <div class="divtxt"><h1>Sobre o X-Forum:</h1>
             <p>O X-Forum reune as informações e curiosidades sobre X-Men em um só lugar. Aqui você pode ler sobre seus personagens favoritos e interagir com outros fãs como você! <br> <br>
                 Quer ler sobre algum personagem? Clique aqui:
@@ -59,7 +58,7 @@
             <p>Responda um quiz com o quanto que vocÊ gosta dos personagens e conte ao mundo qual é o seu mutante favorito! Veja também quais personagens são os favoritos dos outros usuarios! <br> 
                 Quer acessar o quiz? Clique aqui:
             </p>
-            <button class="btn_inicio">Quiz dos X-Men</button>
+            <button class="btn_inicio" onclick="paralogin()">Quiz dos X-Men</button>
         </div>
         </div>
 
@@ -132,3 +131,11 @@
 
 </body>
 </html>
+
+<script>
+
+function paralogin(){
+    window.location.href = "login.html"
+}
+
+</script>

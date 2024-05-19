@@ -5,14 +5,13 @@ body {
     background-size: cover;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-image: url(imagens/xmenfundo.jpg);
-    backdrop-filter: brightness(75%);
     background-attachment: fixed;
 }
 
 header{
     display: flex;
     height: 40px;
-    background-color: #171738;
+    background: linear-gradient(to top, #0c0c1d, #171738);
     position: fixed;
     width: 100%;
 }
@@ -56,7 +55,7 @@ nav a{
     color: #14C310;
 }
 
-nav .active a, nav a:hover{
+nav .agora a, nav a:hover{
     background-color: #14C310;
     color: #171738;
 }
@@ -109,6 +108,7 @@ width: 50px;
     justify-content: center;
     align-content: center;
     color: white;
+    font-size: 20px;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -136,9 +136,6 @@ width: 50px;
     margin-bottom: 50px;
 }
 
-.divimg p{
-    margin-left: 50px;
-}
 
 .div_sobre img{
     height: 350px;
