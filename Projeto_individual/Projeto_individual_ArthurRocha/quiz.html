@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="stylecadlog.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href=""><img src="img/logo.png" class="imagemLogo"></a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
+                        <li><a href=""><b>Sobre</b></a></li>
+                        <li class="agora"><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li><a href="login.html"><b>Entrar</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="div_conteudoquiz">
+        <div id="div_iniciar" class="iniciar">
+            <div id="div_inicio" class="inicio">
+                <h2>Pronto para testar seus conhecimentos sobre X-Men?<br>Boa sorte!</h2>
+                <button class="btn_style" onclick="quiz()">Iniciar quiz</button>
+            </div>
+        </div>
+    
+<div id="div_centralquiz" class="div_centralquiz">
+    <div id="div_quiz_pergunta" class="quiz_pergunta">
+        <h2>Quando os X-Men foram criados?</h2>
+    </div>
+    <div id="div_quiz_resposta" class="quiz_resposta">
+        <input type="radio" value="1" name="pergunta1" id="resposta1">
+        <label for="resposta1">1963</label>
+        <input type="radio" value="0" name="pergunta1" id="resposta2">
+        <label for="resposta2">1968</label>
+        <input type="radio" value="0" name="pergunta1" id="resposta3">
+        <label for="resposta3">1970</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+    <div id="div_quiz_pergunta1" class="quiz_pergunta">
+        <h2>Em que pessoa Charles Xavier foi baseado??</h2>
+    </div>
+    <div id="div_quiz_resposta1" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta2" id="resposta1">
+        <label for="resposta1">Malcon X</label>
+        <input type="radio" value="1" name="pergunta2" id="resposta2">
+        <label for="resposta2">Martin Luther King Jr.</label>
+        <input type="radio" value="0" name="pergunta2" id="resposta3">
+        <label for="resposta3">Albert Camus</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+    <div id="div_quiz_pergunta2" class="quiz_pergunta">
+        <h2>Qual o nome da entidade que possuiu Jean Grey?</h2>
+    </div>
+    <div id="div_quiz_resposta2" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta3" id="resposta1">
+        <label for="resposta1">Gasparzinho</label>
+        <input type="radio" value="0" name="pergunta3" id="resposta2">
+        <label for="resposta2">Corpo-seco</label>
+        <input type="radio" value="1" name="pergunta3" id="resposta3">
+        <label for="resposta3">Fênix</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta3" class="quiz_pergunta">
+        <h2>Qual mutante tem ossos de adamantium?</h2>
+    </div>
+    <div id="div_quiz_resposta3" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta4" id="resposta1">
+        <label for="resposta1">Genosha</label>
+        <input type="radio" value="0" name="pergunta4" id="resposta2">
+        <label for="resposta2">Magneto</label>
+        <input type="radio" value="1" name="pergunta4" id="resposta3">
+        <label for="resposta3">Wolverine</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta4" class="quiz_pergunta">
+        <h2>Em que pessoa Magneto foi baseado??</h2>
+    </div>
+    <div id="div_quiz_resposta4" class="quiz_resposta">
+        <input type="radio" value="1" name="pergunta5" id="resposta1">
+        <label for="resposta1">]Malcon X</label>
+        <input type="radio" value="0" name="pergunta5" id="resposta2">
+        <label for="resposta2">Rambo</label>
+        <input type="radio" value="0" name="pergunta5" id="resposta3">
+        <label for="resposta3">Nail Armstrong</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta5" class="quiz_pergunta">
+        <h2>Qual desses mutantes é brasileiro??</h2>
+    </div>
+    <div id="div_quiz_resposta5" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta6" id="resposta1">
+        <label for="resposta1">Scott Summers</label>
+        <input type="radio" value="0" name="pergunta6" id="resposta2">
+        <label for="resposta2">Jubileu</label>
+        <input type="radio" value="1" name="pergunta6" id="resposta3">
+        <label for="resposta3">Roberto Da Costa</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta6" class="quiz_pergunta">
+        <h2>Qual o nome do filho de Scott Summers(Ciclope)?</h2>
+    </div>
+    <div id="div_quiz_resposta6" class="quiz_resposta">
+        <input type="radio" value="1" name="pergunta7" id="resposta1">
+        <label for="resposta1">Nathan</label>
+        <input type="radio" value="0" name="pergunta7" id="resposta2">
+        <label for="resposta2">Roberto</label>
+        <input type="radio" value="0" name="pergunta7" id="resposta3">
+        <label for="resposta3">Jubileu</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta7" class="quiz_pergunta">
+        <h2>Qual mutante ganhou os poderes da Capitã Marvel?</h2>
+    </div>
+    <div id="div_quiz_resposta7" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta8" id="resposta1">
+        <label for="resposta1">Wanda</label>
+        <input type="radio" value="1" name="pergunta8" id="resposta2">
+        <label for="resposta2">Vampira</label>
+        <input type="radio" value="0" name="pergunta8" id="resposta3">
+        <label for="resposta3">Sanguessuga</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta8" class="quiz_pergunta">
+        <h2>Qual desses mutantes tambem é cantor?</h2>
+    </div>
+    <div id="div_quiz_resposta8" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta9" id="resposta1">
+        <label for="resposta1">Songbird</label>
+        <input type="radio" value="0" name="pergunta9" id="resposta2">
+        <label for="resposta2">Tempestade</label>
+        <input type="radio" value="1" name="pergunta9" id="resposta3">
+        <label for="resposta3">Cristal</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+
+    <div id="div_quiz_pergunta9" class="quiz_pergunta">
+        <h2>Que mutante também é reconhecido como deus?</h2>
+    </div>
+    <div id="div_quiz_resposta9" class="quiz_resposta">
+        <input type="radio" value="0" name="pergunta10" id="resposta1">
+        <label for="resposta1">Wolverine</label>
+        <input type="radio" value="1" name="pergunta10" id="resposta2">
+        <label for="resposta2">Ororo Monroe</label>
+        <input type="radio" value="0" name="pergunta10" id="resposta3">
+        <label for="resposta3">Magma</label>
+        <br>
+        <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+</div>
+
+</div>    
+</body>
+</html>
+
+<script>
+
+function quiz(){
+    document.getElementById("div_centralquiz").style.display = "flex";  
+    document.getElementById("div_quiz_pergunta").style.display = "flex";  
+    document.getElementById("div_quiz_resposta").style.display = "flex";
+    document.getElementById("div_iniciar").style.display = "none";
+    document.getElementById("div_inicio").style.display = "none";
+}
+    
+    var questoes = 0
+    corretas = Number(0)
+
+    function proxima(){
+        questoes++
+       
+
+        if (questoes == 1 && radiosValue.value == "1" && radiosValue.checked ){
+            corretas++
+            document.getElementById("div_quiz_pergunta").style.display = "Block";  
+            document.getElementById("div_quiz_resposta").style.display = "Block";
+            document.getElementById("div_quiz_pergunta1").style.display = "flex";  
+            document.getElementById("div_quiz_resposta1").style.display = "flex";
+        } else {
+
+        }
+    }
+
+
+
+
+</script>

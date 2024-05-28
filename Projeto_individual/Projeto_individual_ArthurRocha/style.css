@@ -232,7 +232,7 @@ flex-direction: column;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    background-color: #7180B9;
+    background: linear-gradient(to top right, #171738, #711997,  #7180B9);
 }
 
 .charcard{

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faça login</title>
+    <title>Cadastre-se</title>
     <link rel="stylesheet" href="stylecadlog.css">
 </head>
 <body>
@@ -31,6 +31,8 @@
 <div id="div_central" class="div_central">
     
     <div id="div_login" class="div_cadastrar">
+
+        <div id="div_campos" class="div_campos">
         <div id="div1">
         <h2>Preencha seus dados:</h2>
         <h3>Nome completo:</h3>
@@ -38,19 +40,20 @@
         <h3>CPF:</h3>
         <input class="input" placeholder="XXX.XXX.XXX-XX" type="password" id="inpt_cpf">
         <h3>Email:</h3>
-    </div>
-    <div id="div2">
         <input class="input" placeholder="Exemplo@gmail.com" type="text" id="inpt_email">
+    </div>
+    <div id="div2" class="div2">
         <h3>Senha:</h3>
         <input class="input" placeholder="Digite sua senha" type="password" id="inpt_senha">
         <h3>Confirme sua senha:</h3>
         <input class="input" placeholder="Confirmação de senha" type="password" id="inpt_confirsenha"> <br>
-    </div> <br> <br>
-        <button class="btn_style">Entrar</button>
+        
+        <button class="btn_style">Cadastrar</button>
+    </div> </div> <br> 
     </div>
     <div id="div_cadastro" class="div_cadastro">
         <h2>Ja é cadastrado? <br>Faça login!</h2>
-        <button class="btn_style" onclick="cadastro()">Entrar</button>
+        <button class="btn_style" onclick="login()">Entrar</button>
     </div>
 </div>
 
@@ -60,8 +63,8 @@
 
 <script>
 
-function cadastro(){
-    window.location.href = "cadastro.html"
+function login(){
+    window.location.href = "login.html"
 }
 
 </script>
