@@ -21,7 +21,10 @@ header{
     background: linear-gradient(to top, #0c0c1d, #171738);
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
+
+
 
 .container{
     width: 100%;
@@ -71,6 +74,7 @@ nav .agora a, nav a:hover{
 .menu{
     display: flex;
     align-items: center;
+    justify-self: flex-end;
 }
 
 .div_conteudo {
@@ -224,8 +228,15 @@ background-color: #14C310;
 
 
 /* quiz */
-body{
+.bodyquiz{
     background-image: url(imagens/xmenfundo3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    overflow: visible;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .div_conteudoquiz {
@@ -256,11 +267,10 @@ body{
     justify-self: center;
     display: flex;
     width: fit-content;
-    height: fit-content;
+    height: max-content;
     flex-direction: column;
     color: #DFF3E4;
     border-radius: 10px;
-    box-shadow: 0 0 10px 5px #00000048;
 }
 
 .quiz_pergunta {
@@ -306,6 +316,11 @@ body{
     border-radius: 10px;
     width: 320px;
   }
+
+  .gif{
+   width: 100px;
+   height: 100px;
+  }
   
   .quiz_resposta  label {
     width: 100%;
@@ -329,7 +344,81 @@ body{
   }
 
   .quiz_resposta input:checked + label {
-    border: solid 3px #14C310;
-    border-color: #14C310;
-    color: #14C310;
+    border: solid 3px #711997;
+    border-color: #711997;
+    color: #711997;
   }
+
+  .fim{
+    display: none;
+    background: linear-gradient(to top right, #171738, #711997,  #032dd4);
+    padding: 15px;
+    flex-direction: column;
+    height: min-content;
+    color: #DFF3E4;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border-radius: 8px;
+}
+
+.fim1{
+    display: none;
+    background: linear-gradient(to top right, #171738, #711997,  #032dd4);
+    padding: 15px;
+    flex-direction: column;
+    height: min-content;
+    margin-top: 1200px;
+    color: #DFF3E4;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border-radius: 8px;
+}
+
+.gabarito{
+    display: flex;
+    width: 700px;
+    flex-direction: row;
+    font-size: 25px;
+    text-align: left;
+}
+
+/* Transição dashs e quiz */
+
+.body_transicao{
+    background-image: url(imagens/x-men_fundokrakoa.avif);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pai{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.ladodash{
+    background-image: url(imagens/fundoladodash.jpg);
+    display: flex;
+    width: 50%;
+    height: 100%;
+
+}
+
+.ladoquiz{
+    background-image: url(imagens/fundoladoquiz.jpg);
+    display: flex;
+    width: 50%;
+    height: 100%;
+}

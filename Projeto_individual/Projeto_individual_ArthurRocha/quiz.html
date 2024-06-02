@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="stylecadlog.css">
+    <link rel="stylesheet" href="stylegeral.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body class="bodyquiz">
 
     <header>
         <div class="container">
-            <div class="logo">
-                <a href=""><img src="img/logo.png" class="imagemLogo"></a>
-            </div>
             <div class="menu">
                 <nav>
                     <ul>
@@ -29,7 +27,9 @@
     <div class="div_conteudoquiz">
         <div id="div_iniciar" class="iniciar">
             <div id="div_inicio" class="inicio">
+                <img src="imagens/stormgif.gif" class="gif" alt="">
                 <h2>Pronto para testar seus conhecimentos sobre X-Men?<br>Boa sorte!</h2>
+                <img src="imagens/magnusgif.gif" class="gif" alt=""> <br>
                 <button class="btn_style" onclick="quiz()">Iniciar quiz</button>
             </div>
         </div>
@@ -39,8 +39,8 @@
         <h2>Quando os X-Men foram criados?</h2>
     </div>
     <div id="div_quiz_resposta" class="quiz_resposta">
-        <input type="radio" value="1" name="pergunta1" id="resposta1">
-        <label for="resposta1">1963</label>
+        <input type="radio" id="radiocorreto" value="1" name="pergunta1">
+        <label for="radiocorreto">1963</label>
         <input type="radio" value="0" name="pergunta1" id="resposta2">
         <label for="resposta2">1968</label>
         <input type="radio" value="0" name="pergunta1" id="resposta3">
@@ -53,12 +53,12 @@
         <h2>Em que pessoa Charles Xavier foi baseado??</h2>
     </div>
     <div id="div_quiz_resposta1" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta2" id="resposta1">
-        <label for="resposta1">Malcon X</label>
-        <input type="radio" value="1" name="pergunta2" id="resposta2">
-        <label for="resposta2">Martin Luther King Jr.</label>
-        <input type="radio" value="0" name="pergunta2" id="resposta3">
-        <label for="resposta3">Albert Camus</label>
+        <input type="radio" value="0" name="pergunta2" id="resposta4">
+        <label for="resposta4">Malcon X</label>
+        <input type="radio" id="radiocorreto1" value="1" name="pergunta2">
+        <label for="radiocorreto1">Martin Luther King Jr.</label>
+        <input type="radio" value="0" name="pergunta2" id="resposta5">
+        <label for="resposta5">Albert Camus</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -67,12 +67,12 @@
         <h2>Qual o nome da entidade que possuiu Jean Grey?</h2>
     </div>
     <div id="div_quiz_resposta2" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta3" id="resposta1">
-        <label for="resposta1">Gasparzinho</label>
-        <input type="radio" value="0" name="pergunta3" id="resposta2">
-        <label for="resposta2">Corpo-seco</label>
-        <input type="radio" value="1" name="pergunta3" id="resposta3">
-        <label for="resposta3">Fênix</label>
+        <input type="radio" value="0" name="pergunta3" id="resposta6">
+        <label for="resposta6">Gasparzinho</label>
+        <input type="radio" value="0" name="pergunta3" id="resposta7">
+        <label for="resposta7">Corpo-seco</label>
+        <input type="radio" id="radiocorreto2" value="1" name="pergunta3">
+        <label for="radiocorreto2">Fênix</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -82,12 +82,12 @@
         <h2>Qual mutante tem ossos de adamantium?</h2>
     </div>
     <div id="div_quiz_resposta3" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta4" id="resposta1">
-        <label for="resposta1">Genosha</label>
-        <input type="radio" value="0" name="pergunta4" id="resposta2">
-        <label for="resposta2">Magneto</label>
-        <input type="radio" value="1" name="pergunta4" id="resposta3">
-        <label for="resposta3">Wolverine</label>
+        <input type="radio" value="0" name="pergunta4" id="resposta8">
+        <label for="resposta8">Genosha</label>
+        <input type="radio" value="0" name="pergunta4" id="resposta9">
+        <label for="resposta9">Magneto</label>
+        <input type="radio" id="radiocorreto3" value="1" name="pergunta4">
+        <label for="radiocorreto3">Wolverine</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -97,12 +97,12 @@
         <h2>Em que pessoa Magneto foi baseado??</h2>
     </div>
     <div id="div_quiz_resposta4" class="quiz_resposta">
-        <input type="radio" value="1" name="pergunta5" id="resposta1">
-        <label for="resposta1">]Malcon X</label>
-        <input type="radio" value="0" name="pergunta5" id="resposta2">
-        <label for="resposta2">Rambo</label>
-        <input type="radio" value="0" name="pergunta5" id="resposta3">
-        <label for="resposta3">Nail Armstrong</label>
+        <input type="radio" id="radiocorreto4" value="1" name="pergunta5">
+        <label for="radiocorreto4">Malcon X</label>
+        <input type="radio" value="0" name="pergunta5" id="resposta10">
+        <label for="resposta10">Rambo</label>
+        <input type="radio" value="0" name="pergunta5" id="resposta11">
+        <label for="resposta11">Nail Armstrong</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -112,12 +112,12 @@
         <h2>Qual desses mutantes é brasileiro??</h2>
     </div>
     <div id="div_quiz_resposta5" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta6" id="resposta1">
-        <label for="resposta1">Scott Summers</label>
-        <input type="radio" value="0" name="pergunta6" id="resposta2">
-        <label for="resposta2">Jubileu</label>
-        <input type="radio" value="1" name="pergunta6" id="resposta3">
-        <label for="resposta3">Roberto Da Costa</label>
+        <input type="radio" value="0" name="pergunta6" id="resposta12">
+        <label for="resposta12">Scott Summers</label>
+        <input type="radio" value="0" name="pergunta6" id="resposta13">
+        <label for="resposta13">Jubileu</label>
+        <input type="radio" id="radiocorreto5" value="1" name="pergunta6">
+        <label for="radiocorreto5">Roberto Da Costa</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -127,12 +127,12 @@
         <h2>Qual o nome do filho de Scott Summers(Ciclope)?</h2>
     </div>
     <div id="div_quiz_resposta6" class="quiz_resposta">
-        <input type="radio" value="1" name="pergunta7" id="resposta1">
-        <label for="resposta1">Nathan</label>
-        <input type="radio" value="0" name="pergunta7" id="resposta2">
-        <label for="resposta2">Roberto</label>
-        <input type="radio" value="0" name="pergunta7" id="resposta3">
-        <label for="resposta3">Jubileu</label>
+        <input type="radio" id="radiocorreto6" value="1" name="pergunta7">
+        <label for="radiocorreto6">Cable</label>
+        <input type="radio" value="0" name="pergunta7" id="resposta14">
+        <label for="resposta14">Roberto</label>
+        <input type="radio" value="0" name="pergunta7" id="resposta15">
+        <label for="resposta15">Jubileu</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -142,12 +142,12 @@
         <h2>Qual mutante ganhou os poderes da Capitã Marvel?</h2>
     </div>
     <div id="div_quiz_resposta7" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta8" id="resposta1">
-        <label for="resposta1">Wanda</label>
-        <input type="radio" value="1" name="pergunta8" id="resposta2">
-        <label for="resposta2">Vampira</label>
-        <input type="radio" value="0" name="pergunta8" id="resposta3">
-        <label for="resposta3">Sanguessuga</label>
+        <input type="radio" value="0" name="pergunta8" id="resposta16">
+        <label for="resposta16">Wanda</label>
+        <input type="radio" id="radiocorreto7" value="1" name="pergunta8">
+        <label for="radiocorreto7">Vampira</label>
+        <input type="radio" value="0" name="pergunta8" id="resposta17">
+        <label for="resposta17">Sanguessuga</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -157,12 +157,12 @@
         <h2>Qual desses mutantes tambem é cantor?</h2>
     </div>
     <div id="div_quiz_resposta8" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta9" id="resposta1">
-        <label for="resposta1">Songbird</label>
-        <input type="radio" value="0" name="pergunta9" id="resposta2">
-        <label for="resposta2">Tempestade</label>
-        <input type="radio" value="1" name="pergunta9" id="resposta3">
-        <label for="resposta3">Cristal</label>
+        <input type="radio" value="0" name="pergunta9" id="resposta18">
+        <label for="resposta18">Songbird</label>
+        <input type="radio" value="0" name="pergunta9" id="resposta19">
+        <label for="resposta19">Tempestade</label>
+        <input type="radio" id="radiocorreto8" value="1" name="pergunta9">
+        <label for="radiocorreto8">Cristal</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
     </div>
@@ -172,14 +172,50 @@
         <h2>Que mutante também é reconhecido como deus?</h2>
     </div>
     <div id="div_quiz_resposta9" class="quiz_resposta">
-        <input type="radio" value="0" name="pergunta10" id="resposta1">
-        <label for="resposta1">Wolverine</label>
-        <input type="radio" value="1" name="pergunta10" id="resposta2">
-        <label for="resposta2">Ororo Monroe</label>
-        <input type="radio" value="0" name="pergunta10" id="resposta3">
-        <label for="resposta3">Magma</label>
+        <input type="radio" value="0" name="pergunta10" id="resposta20">
+        <label for="resposta20">Wolverine</label>
+        <input type="radio" id="radiocorreto9" value="1" name="pergunta10">
+        <label for="radiocorreto9">Ororo Monroe</label>
+        <input type="radio" value="0" name="pergunta10" id="resposta21">
+        <label for="resposta21">Magma</label>
         <br>
         <button class="btn_style" onclick="proxima()">Proxima</button>
+    </div>
+
+    <div id="div_resultados1" class="fim1">
+        <div id="div_resultado1" class="fim">
+            <img src="imagens/wolverine-palm-face.gif" class="gif" alt="">
+            <h2>Nossa! Acho que você não é um verdadeiro fã de X-Men ainda...<br>Mais sorte na proxima!</h2>
+            <img src="imagens/cyclopsgif.gif" class="gif" alt=""> <br>
+            <div id="div_ponto1"></div>
+            <canvas class="graficos" id="canvas_mychart"></canvas>
+            <div id="div_gabarito"></div>
+            <button class="btn_style" onclick="quiz()">Reiniciar quiz</button>
+        </div>
+    </div>
+
+    <div id="div_resultados2" class="fim1">
+        <div id="div_resultado2" class="fim">
+            <img src="imagens/psylock.gif" class="gif" alt="">
+            <h2>Você é quase um fã completo de X-Men!<br>Quer tentar denovo?</h2>
+            <img src="imagens/colossus.gif" class="gif" alt=""> <br>
+            <div id="div_ponto2"></div>
+            <canvas class="graficos" id="canvas_mychart2"></canvas>
+            <div id="div_gabarito2"></div>
+            <button class="btn_style" onclick="quiz()">Reiniciar quiz</button>
+        </div>
+    </div>
+
+    <div id="div_resultados3" class="fim1">
+        <div id="div_resultado3" class="fim">
+            <img src="imagens/rogue-gambit.gif" class="gif" alt="">
+            <h2>UAU! Você com certeza é um verdadeiro fã de X-Men!!<br>Quer fazer donovo?</h2>
+            <img src="imagens/psylocke.gif" class="gif" alt=""> <br>
+            <div id="div_ponto3"></div>
+            <canvas class="graficos" id="canvas_mychart3"></canvas>
+            <div id="div_gabarito3"></div>
+            <button class="btn_style" onclick="quiz()">Reiniciar quiz</button>
+        </div>
     </div>
 
 </div>
@@ -190,33 +226,309 @@
 
 <script>
 
+    
+var corretas = Number(0)
+var questoes = 0
+var erradas = 10;
+var gabarito = ""
+
 function quiz(){
+    gabarito = ``
+    radiocorreto.checked = false;
+    radiocorreto1.checked = false;
+    radiocorreto2.checked = false;
+    radiocorreto3.checked = false;
+    radiocorreto4.checked = false;
+    radiocorreto5.checked = false;
+    radiocorreto6.checked = false;
+    radiocorreto7.checked = false;
+    radiocorreto8.checked = false;
+    resposta2.checked = false;
+    resposta3.checked = false;
+    resposta4.checked = false;
+    resposta5.checked = false;
+    resposta6.checked = false;
+    resposta7.checked = false;
+    resposta8.checked = false;
+    resposta9.checked = false;
+    resposta10.checked = false;
+    resposta11.checked = false;
+    resposta12.checked = false;
+    resposta13.checked = false;
+    resposta14.checked = false;
+    resposta15.checked = false;
+    resposta16.checked = false;
+    resposta17.checked = false;
+    resposta18.checked = false;
+    resposta19.checked = false;
+    resposta20.checked = false;
+    resposta21.checked = false;
+
     document.getElementById("div_centralquiz").style.display = "flex";  
     document.getElementById("div_quiz_pergunta").style.display = "flex";  
     document.getElementById("div_quiz_resposta").style.display = "flex";
     document.getElementById("div_iniciar").style.display = "none";
     document.getElementById("div_inicio").style.display = "none";
+    document.getElementById("div_resultados1").style.display = "none";
+    document.getElementById("div_resultado1").style.display = "none";
+    document.getElementById("div_resultados2").style.display = "none";
+    document.getElementById("div_resultado2").style.display = "none";
+    document.getElementById("div_resultados3").style.display = "none";
+    document.getElementById("div_resultado3").style.display = "none";
+
+    erradas = 0;
+    corretas = Number(0);
+    questoes = 0;
 }
     
-    var questoes = 0
-    corretas = Number(0)
+    
 
     function proxima(){
         questoes++
        
 
-        if (questoes == 1 && radiosValue.value == "1" && radiosValue.checked ){
+        if (questoes == 1 ){
+            if (radiocorreto.value == "1" && radiocorreto.checked){
             corretas++
-            document.getElementById("div_quiz_pergunta").style.display = "Block";  
-            document.getElementById("div_quiz_resposta").style.display = "Block";
+            gabarito += `<p class="gabarito">Você acertou a questão 1: Os X-Men foram criados em 1963. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 1: os X-Men foram criados em 1963. <br></p>`}
+            document.getElementById("div_quiz_pergunta").style.display = "none";  
+            document.getElementById("div_quiz_resposta").style.display = "none";
             document.getElementById("div_quiz_pergunta1").style.display = "flex";  
             document.getElementById("div_quiz_resposta1").style.display = "flex";
-        } else {
+        } else if (questoes == 2){ 
+            if(radiocorreto1.value == "1" && radiocorreto1.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 2: Xavier foi baseado em Martin Luther King Jr. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 2: Xavier foi baseado em Martin Luther King Jr. <br></p>`}
+            document.getElementById("div_quiz_pergunta1").style.display = "none";  
+            document.getElementById("div_quiz_resposta1").style.display = "none";
+            document.getElementById("div_quiz_pergunta2").style.display = "flex";  
+            document.getElementById("div_quiz_resposta2").style.display = "flex";
 
-        }
+        } else if (questoes == 3){
+            if (radiocorreto2.value == "1" && radiocorreto2.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 3: A entidade que possúi Jean Grey é a Fênix. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 3: A entidade que possúi Jean Grey é a Fênix. <br></p>`}
+            document.getElementById("div_quiz_pergunta2").style.display = "none";  
+            document.getElementById("div_quiz_resposta2").style.display = "none";
+            document.getElementById("div_quiz_pergunta3").style.display = "flex";  
+            document.getElementById("div_quiz_resposta3").style.display = "flex";
+        } else if (questoes == 4){
+            if(radiocorreto3.value == "1" && radiocorreto3.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 4: Wolverine tem ossos de adamantium. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 4: Wolverine tem ossos de adamantium. <br></p>`}
+            document.getElementById("div_quiz_pergunta3").style.display = "none";  
+            document.getElementById("div_quiz_resposta3").style.display = "none";
+            document.getElementById("div_quiz_pergunta4").style.display = "flex";  
+            document.getElementById("div_quiz_resposta4").style.display = "flex";
+        } else if (questoes == 5){
+            if(radiocorreto4.value == "1" && radiocorreto4.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 5: Magneto foi baseado em Malcon X. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 5: Magneto foi baseado em Malcon X. <br></p>`}
+            document.getElementById("div_quiz_pergunta4").style.display = "none";  
+            document.getElementById("div_quiz_resposta4").style.display = "none";
+            document.getElementById("div_quiz_pergunta5").style.display = "flex";  
+            document.getElementById("div_quiz_resposta5").style.display = "flex";
+        } else if (questoes == 6) {
+            if (radiocorreto5.value == "1" && radiocorreto5.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 6: Roberto da Costa é brasileiro! <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 6: Roberto da Costa é brasileiro!. <br></p>`}
+            document.getElementById("div_quiz_pergunta5").style.display = "none";  
+            document.getElementById("div_quiz_resposta5").style.display = "none";
+            document.getElementById("div_quiz_pergunta6").style.display = "flex";  
+            document.getElementById("div_quiz_resposta6").style.display = "flex";
+        } else if (questoes == 7) {
+            if (radiocorreto6.value == "1" && radiocorreto6.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 7: o nome do filho de Scott Summers é Cable. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 7: o nome do filho de Scott Summers é Cable. <br></p>`}
+            document.getElementById("div_quiz_pergunta6").style.display = "none";  
+            document.getElementById("div_quiz_resposta6").style.display = "none";
+            document.getElementById("div_quiz_pergunta7").style.display = "flex";  
+            document.getElementById("div_quiz_resposta7").style.display = "flex";
+        } else if (questoes == 8){
+            if(radiocorreto7.value == "1" && radiocorreto7.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 8: Vampira foi quem absorveu os poderes de Capitã Marvel. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 8: Vampira foi quem absorveu os poderes de Capitã Marvel. <br></p>`}
+            document.getElementById("div_quiz_pergunta7").style.display = "none";  
+            document.getElementById("div_quiz_resposta7").style.display = "none";
+            document.getElementById("div_quiz_pergunta8").style.display = "flex";  
+            document.getElementById("div_quiz_resposta8").style.display = "flex";
+        } else if (questoes == 9){
+            if(radiocorreto8.value == "1" && radiocorreto8.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 9: Cristal é uma mutante cantora e tem poderes relacionados aos sons. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você errou a questão 9: Cristal é uma mutante cantora e tem poderes relacionados aos sons. <br></p>`}
+            document.getElementById("div_quiz_pergunta8").style.display = "none";  
+            document.getElementById("div_quiz_resposta8").style.display = "none";
+            document.getElementById("div_quiz_pergunta9").style.display = "flex";  
+            document.getElementById("div_quiz_resposta9").style.display = "flex";
+        } else  if (questoes == 10){
+            if(radiocorreto9.value == "1" && radiocorreto9.checked ){
+            corretas++
+            gabarito += `<p class="gabarito">Você acertou a questão 10: Ororo Monroe, também conhecida como Tempestade, é reconhecida como deusa. <br></p>`}
+            else {gabarito += `<p class="gabarito">Você  errou a questão 10: Ororo Monroe, também conhecida como Tempestade, é reconhecida como deusa. <br></p>`}
+            document.getElementById("div_quiz_pergunta9").style.display = "none";  
+            document.getElementById("div_quiz_resposta9").style.display = "none";
+            terminar();
+        } 
     }
 
+    function terminar(){
 
+        if(corretas <= 4){
+            document.getElementById("div_resultados1").style.display = "flex";
+            document.getElementById("div_resultado1").style.display = "flex";
+            div_ponto1.innerHTML = `<h2>${corretas}/10</h2>`
+            div_gabarito.innerHTML = `${gabarito}`
+        } else if (corretas > 4 && corretas <= 7){
+            document.getElementById("div_resultados2").style.display = "flex";
+            document.getElementById("div_resultado2").style.display = "flex";
+            div_ponto2.innerHTML = `<h2>${corretas}/10</h2>`
+            div_gabarito2.innerHTML = `${gabarito}`
+        } else if (corretas > 7 && corretas <= 10){
+            document.getElementById("div_resultados3").style.display = "flex";
+            document.getElementById("div_resultado3").style.display = "flex";
+            div_ponto3.innerHTML = `<h2>${corretas}/10</h2>` 
+            div_gabarito3.innerHTML = `${gabarito}`
+        }
+
+        erradas = 10 - corretas;
+
+
+        const labels = [
+        "Acertos e erros",
+    ];
+
+        const data = {
+        labels: labels,
+        datasets: [{
+            label: "Corretas",
+            backgroundColor: '#14C310',
+            borderColor: '#14C310',
+            data: [corretas]
+        },
+    
+        {
+            label: "Incorretas",
+            backgroundColor: '#ff0000',
+            borderColor: '#ff0000',
+            data: [erradas]
+        }
+
+    ]
+    };
+
+    
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+
+
+    const canvas_mychart = new Chart(
+        document.getElementById('canvas_mychart'),
+        config
+    );
+
+    //Grafico caminho 2
+
+    const labels2 = [
+        "Acertos e erros",
+    ];
+
+        const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: "Corretas",
+            backgroundColor: '#14C310',
+            borderColor: '#14C310',
+            data: [corretas]
+        },
+    
+        {
+            label: "Incorretas",
+            backgroundColor: '#ff0000',
+            borderColor: '#ff0000',
+            data: [erradas]
+        }
+
+    ]
+    };
+
+    
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
+
+
+    const canvas_mychart2 = new Chart(
+        document.getElementById('canvas_mychart2'),
+        config2
+    );
+
+
+    // Grafico caminho 3
+
+    const labels3 = [
+        "Acertos e erros",
+    ];
+
+        const data3 = {
+        labels: labels3,
+        datasets: [{
+            label: "Corretas",
+            backgroundColor: '#14C310',
+            borderColor: '#14C310',
+            data: [corretas]
+        },
+    
+        {
+            label: "Incorretas",
+            backgroundColor: '#ff0000',
+            borderColor: '#ff0000',
+            data: [erradas]
+        }
+
+    ]
+    };
+
+    
+    const config3 = {
+        type: 'bar',
+        data: data3,
+        options: {}
+    };
+
+
+    const canvas_mychart3 = new Chart(
+        document.getElementById('canvas_mychart3'),
+        config
+    );
+
+    }
+
+    
+
+    
 
 
 </script>
+
+<style>
+    .graficos{
+        position: relative;
+        height: 20px;
+        width: 20px;
+        background-color: rgba(255, 255, 255);
+    }
+</style>
