@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz ou ranking</title>
+    <link rel="stylesheet" href="css/stylegeral.css">
+    <script src="js/sessao.js" ></script>
+</head>
+<body onload="validarSessao()" class="body_transicao">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href=""><img src="img/logo.png" class="imagemLogo"></a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li class="agora"><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
+                        <li><a href=""><b>Sobre</b></a></li>
+                        <li><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li><a href="login.html"><b>Entrar</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="div_pai1" class="pai1">
+
+        <div id="div_pai2" class="pai2">
+        
+        <div id="div_central" class="centro_transicao">
+                <h2 id="pergunta">O que quer fazer, <span id="nome_user" ></span>?</h2>
+            <div class="div_opcoes">
+            <div id="div_botaodash" onclick="dashs()" class="botao_div"><h2>Quer ver as médias de acertos e erros do quiz?</h2><h2>Clique aqui!</h2>
+            <img class="icones" src="imagens/ranking.png" alt="imagens de ranking pode ser encontrada aqui: https://www.flaticon.com/free-icons/rank Rank icons created by IwitoStudio - Flaticon"></div>
+                <div id="div_botaoquiz" onclick="quiz()" class="botao_div"><h2>Quer fazer o quiz e ver o quão fã você é?</h2><h2>Clique aqui!</h2>
+                <img class="icones" src="imagens/ideas.png" alt="imagens de lampadazinha pode ser encontrada aqui: https://www.flaticon.com/free-icons/quiz Quiz icons created by Freepik - Flaticon"></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    function quiz(){
+        window.location.href = "quiz.html"
+    }
+
+    function dashs(){
+        window.location.href = "dashboards.html"
+    }
+
+</script>

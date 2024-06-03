@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="css/stylegeral.css">
+    <script src="js/sessao.js" ></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
+                        <li><a href=""><b>Sobre</b></a></li>
+                        <li><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li class="agora"><a href="login.html"><b>Entrar</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="div_conteudo">
+    
+        <div id="div_erro" class="erro_cad"></div>
+
+<div id="div_central" class="div_central">
+    
+    <div id="div_login" class="div_cadastrar">
+
+        <div id="div_campos" class="div_campos">
+        <div id="div1">
+        <h2>Preencha seus dados:</h2>
+        <h3>Nome:</h3>
+        <input class="input" placeholder="Insira seu nome" type="text" id="inpt_nome">
+        <h3>CPF:</h3>
+        <input class="input" placeholder="XXX.XXX.XXX-XX" type="password" id="inpt_cpf">
+        <h3>Email:</h3>
+        <input class="input" placeholder="Exemplo@gmail.com" type="text" id="inpt_email">
+    </div>
+    <div id="div2" class="div2">
+        <h3>Senha:</h3>
+        <input class="input" placeholder="Digite sua senha" type="password" id="inpt_senha">
+        <h3>Confirme sua senha:</h3>
+        <input class="input" placeholder="Confirmação de senha" type="password" id="inpt_confirsenha"> <br>
+        <h3>Personagem favorito:</h3>
+        <select name="slct_personagem" id="slct_personagem">
+            <option value="">Sem personagem favorito</option>
+            <option value="1">Jean Grey</option>
+            <option value="2">CIclope</option>
+            <option value="3">Tempestade</option>
+            <option value="4">Professor X</option>
+            <option value="5">Magneto</option>
+            <option value="6">Noturno</option>
+            <option value="7">Mística</option>
+            <option value="8">Lince Negra</option>
+            <option value="9">Jubileu</option>
+            <option value="10">Fera</option>
+        </select> <br>
+        
+        <button class="btn_style" onclick="cadastrar()">Cadastrar</button>
+    </div> </div> <br> 
+
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div id="div_aguardar" class="loading-div">
+    </div>
+    <div id="div_erros_login"></div>
+
+
+    </div>
+    <div id="div_cadastro" class="div_cadastro">
+        <h2>Ja é cadastrado? <br>Faça login!</h2>
+        <button class="btn_style" onclick="login()">Entrar</button>
+    </div>
+</div>
+
+</div>    
+</body>
+</html>
+
+<script>
+
+function login(){
+    window.location.href = "login.html"
+}
+
+function  cadastrar(){
+    var nome_user = inpt_nome.value
+    var cpf = inpt_cpf.value
+    var email = inpt_email.value
+    var senha = inpt_senha.value
+    var confirmar_senha = inpt_confirsenha.value
+    var personagem = slct_personagem.value
+
+    if(senha != confirmar_senha){
+        div_erro.innerHTML = `<h2>As senhas não coincidem!</h2>`
+        document.getElementById("div_erro").style.display = "block";
+        setTimeout(() => {
+        document.getElementById("div_erro").style.display = "none";
+        }, 4000);
+    } else if (cpf.length < 11){
+        div_erro.innerHTML = `<h2>Tamanho do CPF inválido!</h2>`
+        document.getElementById("div_erro").style.display = "block";
+        setTimeout(() => {
+        document.getElementById("div_erro").style.display = "none";
+        }, 4000);
+
+    } else if(email.indexOf('@') < 0 || email.indexOf('.') < 0){
+        document.getElementById("div_erro").style.display = "block";
+        div_erro.innerHTML = `<h2>Insira um email válido!</h2>`
+        document.getElementById("div_erro").style.display = "block";
+        setTimeout(() => {
+        document.getElementById("div_erro").style.display = "none";
+        }, 4000);
+
+    } else {
+
+        fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+
+        cpfServer: cpf,
+        personagemServer: personagem,
+        nomeServer: nome_user,
+        emailServer: email,
+        senhaServer: senha
+      }),
+    })
+
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, 2000);
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            slct_personagem.innerHTML += `<option value='${empresa.idpersonagem}'>${empresa.nome}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+
+
+  }
+
+
+</script>
+

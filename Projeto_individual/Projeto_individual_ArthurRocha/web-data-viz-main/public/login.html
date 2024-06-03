@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça login</title>
+    <link rel="stylesheet" href="css/stylegeral.css">
+    <script src="js/sessao.js" ></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
+                        <li><a href=""><b>Sobre</b></a></li>
+                        <li><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li class="agora"><a href="login.html"><b>Entrar</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="div_conteudo">
+    
+<div id="div_central" class="div_central">
+    <div id="div_cadastro" class="div_cadastro">
+        <h2>Não tem uma conta? <br>Faça seu cadastro!</h2>
+        <button class="btn_style" onclick="cadastro()">Cadastre-se</button>
+    </div>
+    <div id="div_login" class="div_login">
+        <h1>Faça login se ja é usuario:</h1>
+        <h2>Email:</h2>
+        <input class="input" placeholder="Exemplo@gmail.com" type="text" id="inpt_email">
+        <h2>Senha:</h2>
+        <input class="input" placeholder="Digite sua senha" type="password" id="inpt_senha"> <br>
+        <button class="btn_style" onclick="entrar()" >Entrar</button>
+
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+              <span id="mensagem_erro"></span>
+            </div>
+          </div>
+          <div id="div_aguardar" class="loading-div">
+          </div>
+          <div id="div_erros_login"></div>
+
+    </div>
+</div>
+
+</div>    
+</body>
+</html>
+
+<script>
+
+function cadastro(){
+    window.location.href = "cadastro.html"
+}
+
+function entrar() {
+        aguardar();
+
+        var emailVar = inpt_email.value;
+        var senhaVar = inpt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./trans_quiz_dash.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
