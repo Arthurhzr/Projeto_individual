@@ -20,7 +20,7 @@ function autenticar(req, res) {
                 if (resultadoAutenticar.length == 1) {
                     const usuario = resultadoAutenticar[0];
                     res.json({
-                        id: usuario.idUsuario,
+                        id: usuario.idusuario,
                         email: usuario.email,
                         nome: usuario.nome,
                         senha: usuario.senha
@@ -80,7 +80,40 @@ function cadastrar(req, res) {
     }
 }
 
+
+//quiz
+
+function armazenaracertos(req, res){
+    var userid = req.body.iduserServer;
+    var acertos = req.body.acertosServer;
+
+
+// Validações básicas 
+if (!userid || !acertos) {
+return res
+.status (400)
+.send("Não foi possivel armazenar seus dados!");
+}
+
+usuarioModel.armazenaracertos(userid, acertos)
+.then(
+    function (resultado) {
+        res.json(resultado);
+    }
+).catch(
+    function (erro) {
+        console.log(erro);
+        console.log(
+            "\nHouve um erro ao realizar o armazenamento! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    }
+);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    armazenaracertos
 }

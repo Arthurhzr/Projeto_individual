@@ -22,7 +22,18 @@ function cadastrar(nome, email, senha, cpf, personagem) {
     return database.executar(instrucaoSql);
 }
 
+
+
+// QUIZ!
+
+function armazenaracertos(userid, acertos){
+    var instrucaoSql = `INSERT INTO pontuacao (acertos, fk_usuario) values (${acertos}, ${userid});`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    armazenaracertos
 };

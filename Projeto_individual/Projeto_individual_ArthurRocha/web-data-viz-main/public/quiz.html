@@ -6,18 +6,21 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="css/stylegeral.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/sessao.js" ></script>
 </head>
 <body class="bodyquiz">
 
     <header>
         <div class="container">
+            <div class="logo">
+                <a href=""><img src="imagens/X_All-Logo.png" class="imagemLogo"></a>
+            </div>
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="Projeto_ArthurRocha.html"><b>Página Inicial</b></a></li>
-                        <li><a href=""><b>Sobre</b></a></li>
-                        <li><a href="quiz.html"><b>Quiz</b></a></li>
-                        <li class="agora" ><a href="login.html"><b>Entrar</b></a></li>
+                        <li><a href="index.html"><b>Página Inicial</b></a></li>
+                        <li class="agora" ><a href="quiz.html"><b>Quiz</b></a></li>
+                        <li><a href="login.html"><b>Entrar</b></a></li>
                     </ul>
                 </nav>
             </div>
@@ -190,7 +193,8 @@
             <div id="div_ponto1"></div>
             <canvas class="graficos" id="canvas_mychart"></canvas>
             <div id="div_gabarito"></div>
-            <button class="btn_style" onclick="quiz()">Reiniciar quiz</button>
+            <button class="btn_style" onclick="reiniciar()">Reiniciar quiz</button>
+            <button class="btn_style" style="width: fit-content;" onclick="dashs()">Ir para a tela de pontuações</button>
         </div>
     </div>
 
@@ -202,7 +206,8 @@
             <div id="div_ponto2"></div>
             <canvas class="graficos" id="canvas_mychart2"></canvas>
             <div id="div_gabarito2"></div>
-            <button class="btn_style" onclick="quiz()">Reiniciar quiz</button>
+            <button class="btn_style" onclick="reiniciar()">Reiniciar quiz</button>
+            <button class="btn_style" style="width: fit-content;" onclick="dashs()">Ir para a tela de pontuações</button>
         </div>
     </div>
 
@@ -215,10 +220,21 @@
             <canvas class="graficos" id="canvas_mychart3"></canvas>
             <div id="div_gabarito3"></div>
             <button class="btn_style" onclick="reiniciar()">Reiniciar quiz</button>
+            <button class="btn_style" style="width: fit-content;" onclick="dashs()">Ir para a tela de pontuações</button>
+
         </div>
     </div>
 
 </div>
+
+<div class="alerta_erro">
+    <div class="card_erro" id="cardErro">
+      <span id="mensagem_erro"></span>
+    </div>
+  </div>
+  <div id="div_aguardar" class="loading-div">
+  </div>
+  <div id="div_erros_login"></div>
 
 </div>    
 </body>
@@ -226,11 +242,15 @@
 
 <script>
 
-    
+var id_user = sessionStorage.ID_USUARIO;
 var corretas = Number(0)
 var questoes = 0
 var erradas = 10;
 var gabarito = ""
+
+function dashs(){
+    window.location.href = "dashboards.html"
+}
 
 function reiniciar(){
     reload()
@@ -516,10 +536,59 @@ function quiz(){
 
     const canvas_mychart3 = new Chart(
         document.getElementById('canvas_mychart3'),
-        config
+        config3
     );
 
-    }
+
+
+// A PARTE DIFICIL!!
+
+
+fetch("/usuarios/armazenaracertos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        iduserServer: id_user,
+        acertosServer: corretas
+      }),
+    })
+
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "none";
+
+          mensagem_erro.innerHTML =
+            "";
+
+          setTimeout(() => {
+            
+          }, 2000);
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
 
     
 

@@ -32,11 +32,14 @@ header{
 .logo{
     display: flex;
     align-items: center;
-    margin-top: 55px;
 }
 
 .imagemLogo{
-    width: 200px;
+    width: 100px;
+}
+
+.logogrande{
+    width: 400px;
 }
 
 nav ul, nav li{
@@ -105,11 +108,13 @@ width: 50px;
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     align-content: center;
     color: white;
-    font-size: 20px;
-    text-shadow: 5px 5px 5px black;
+    font-size: 30px;
+    text-shadow: 5px 5px 5px #14C310;
 }
 
 .fraseprincipal h1{

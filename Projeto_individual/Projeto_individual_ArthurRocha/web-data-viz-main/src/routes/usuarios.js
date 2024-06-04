@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/armazenaracertos", function (req, res) {
+    usuarioController.armazenaracertos(req, res);
+});
+
 module.exports = router;

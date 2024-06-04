@@ -4,8 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/stylegeral.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
-<body>
+<body class="body_dash">
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href=""><img src="imagens/X_All-Logo.png" class="imagemLogo"></a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><b>Página Inicial</b></a></li>
+                        <li class="agora"><a><b>Pontuações</b></a></li>
+                        <li><a href="login.html"><b>Entrar</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="div_conteudo_dash" class="div_conteudo2">
+
+        <div id="div_centro" class="centro_dash">
+            <div id="btn_sair"></div>
+            <h1>Bem vindo as estatísticas do quiz!</h1> <h1>Aqui você pode ver acertos e erros tanto individuais como gerais</h1>
+
+            <div id="div_individual" class="pnts_individuais">
+                <div onclick="abrir_individuais()" id="div_barra_individual" class="barra_individuais"><h2>Informações individuais:</h2> <img class="seta" src="imagens/seta_direita_clara.png" alt=""></div>
+                <div onclick="fechar_individuais()" id="div_barra_individual_opn" style="display: none;" class="barra_individuais"><h2>Informações individuais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
+                <div id="info_individuais" class="indivs">
+                    <h1>Gráfico dos seus acertos e erros totais:</h1>
+                    <canvas class="graficos" id="grafico_erro_acerto_indiv"></canvas>
+
+                </div>
+        </div>
+        
+        </div>
+
+    </div>
     
 </body>
 </html>
+
+<script>
+
+    function abrir_individuais(){
+        document.getElementById("div_barra_individual").style.display = "none";
+        document.getElementById("div_barra_individual_opn").style.display = "flex";
+        document.getElementById("info_individuais").style.display = "flex";
+    }
+
+    function fechar_individuais(){
+        document.getElementById("div_barra_individual").style.display = "flex";
+        document.getElementById("div_barra_individual_opn").style.display = "none";
+        document.getElementById("info_individuais").style.display = "none";
+    }
+
+
+    // grafico erros e acertos inividuais
+
+    const DATA_COUNT = 5;
+const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
+const data = {
+  labels: [
+    'Erros',
+    'Acertos'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)'
+    ]
+  }]
+};
+
+const config = {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Pie Chart'
+      }
+    }
+  },
+};
+
+const canvas_mychart = new Chart(
+        document.getElementById('grafico_erro_acerto_indiv'),
+        config
+    );
+
+</script>
