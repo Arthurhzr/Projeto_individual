@@ -86,16 +86,17 @@ function cadastrar(req, res) {
 function armazenaracertos(req, res){
     var userid = req.body.iduserServer;
     var acertos = req.body.acertosServer;
+    var erros = req.body.erradasServer
 
 
 // Validações básicas 
-if (!userid || !acertos) {
+if (!userid || !acertos || !erros) {
 return res
 .status (400)
 .send("Não foi possivel armazenar seus dados!");
 }
 
-usuarioModel.armazenaracertos(userid, acertos)
+usuarioModel.armazenaracertos(userid, acertos, erros)
 .then(
     function (resultado) {
         res.json(resultado);

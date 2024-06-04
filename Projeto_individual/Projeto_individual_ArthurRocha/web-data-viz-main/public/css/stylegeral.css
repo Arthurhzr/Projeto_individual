@@ -561,6 +561,7 @@ background-color: #14C310;
     padding-left: 10px;
     padding-right: 10px;
     align-items: center;
+    cursor: pointer;
 }
 
 .seta{

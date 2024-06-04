@@ -1,17 +1,17 @@
 var alertas = [];
 
-function obterdados(idAquario) {
-    fetch(`/medidas/tempo-real/${idAquario}`)
+function obterdados(idusuario) {
+    fetch(`/medidas/tempo-real/${idusuario}`)
         .then(resposta => {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
 
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    alertar(resposta, idAquario);
+                    alertar(resposta, idusuario);
                 });
             } else {
-                console.error(`Nenhum dado encontrado para o id ${idAquario} ou erro na API`);
+                console.error(`Nenhum dado encontrado para o id ${idusuario} ou erro na API`);
             }
         })
         .catch(function (error) {
@@ -20,8 +20,8 @@ function obterdados(idAquario) {
 
 }
 
-function alertar(resposta, idAquario) {
-    var temp = resposta[0].temperatura;
+function alertar(resposta, idusuario) {
+    var temp = resposta[0].erros;
 
     var grauDeAviso = '';
 
@@ -66,30 +66,30 @@ function alertar(resposta, idAquario) {
 
     var card;
 
-    if (document.getElementById(`temp_aquario_${idAquario}`) != null) {
-        document.getElementById(`temp_aquario_${idAquario}`).innerHTML = temp + "°C";
+    if (document.getElementById(`temp_aquario_${idusuario}`) != null) {
+        document.getElementById(`temp_aquario_${idusuario}`).innerHTML = temp + "°C";
     }
 
-    if (document.getElementById(`card_${idAquario}`)) {
-        card = document.getElementById(`card_${idAquario}`)
+    if (document.getElementById(`card_${idusuario}`)) {
+        card = document.getElementById(`card_${idusuario}`)
         card.className = classe_temperatura;
     }
 }
 
-function exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor) {
-    var indice = alertas.findIndex(item => item.idAquario == idAquario);
+function exibirAlerta(temp, idusuario, grauDeAviso, grauDeAvisoCor) {
+    var indice = alertas.findIndex(item => item.idusuario == idusuario);
 
     if (indice >= 0) {
-        alertas[indice] = { idAquario, temp, grauDeAviso, grauDeAvisoCor }
+        alertas[indice] = { idusuario, temp, grauDeAviso, grauDeAvisoCor }
     } else {
-        alertas.push({ idAquario, temp, grauDeAviso, grauDeAvisoCor });
+        alertas.push({ idusuario, temp, grauDeAviso, grauDeAvisoCor });
     }
 
     exibirCards();
 }
 
-function removerAlerta(idAquario) {
-    alertas = alertas.filter(item => item.idAquario != idAquario);
+function removerAlerta(idusuario) {
+    alertas = alertas.filter(item => item.idusuario != idusuario);
     exibirCards();
 }
 
@@ -102,9 +102,9 @@ function exibirCards() {
     }
 }
 
-function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
+function transformarEmDiv({ idusuario, temp, grauDeAviso, grauDeAvisoCor }) {
 
-    var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
+    var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idusuario).descricao;
     return `
     <div class="mensagem-alarme">
         <div class="informacao">

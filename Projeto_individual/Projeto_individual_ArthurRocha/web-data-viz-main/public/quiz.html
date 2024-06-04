@@ -253,7 +253,7 @@ function dashs(){
 }
 
 function reiniciar(){
-    reload()
+    window.location.reload()
 }
 
 function quiz(){
@@ -553,7 +553,8 @@ fetch("/usuarios/armazenaracertos", {
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         iduserServer: id_user,
-        acertosServer: corretas
+        acertosServer: corretas,
+        erradasServer: erradas
       }),
     })
 
