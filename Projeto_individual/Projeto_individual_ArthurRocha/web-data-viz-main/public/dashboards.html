@@ -180,17 +180,6 @@ fetch(`/medidas/personagens`, { cache: 'no-store' })
         
         var ctx3 = document.getElementById('grafico_personagem').getContext('2d');
 
-        const labels3 = ['JeanGrey',
-            'Ciclope',
-            'Tempestade',
-            'ProfessorX',
-            'Magneto',
-            'Noturno',
-            'Mística',
-            'LinceNegra',
-            'Jubileu',
-            'Fera'
-    ];
       
     const charData3 = {
   labels: ['JeanGrey',
@@ -205,7 +194,6 @@ fetch(`/medidas/personagens`, { cache: 'no-store' })
             'Fera'],
   datasets: [
     {
-      label: labels3,
       data: [JeanGreynum,
              Ciclopenum,
              Tempestadenum,
@@ -322,13 +310,18 @@ fetch(`/medidas/menormaior`, { cache: 'no-store' })
     
 
     const charData2 = {
-  labels: ['Acertos','Erros'],
+  labels: ['Acertos e erros'],
   datasets: [
     {
-      label: 'Dataset 1',
-      data: [corretas2, erradas2],
-      backgroundColor: ['red','#14C310'],
-    }
+      label: 'Acertos',
+      data: [corretas2],
+      backgroundColor: '#14C310',
+    },
+
+    {label: 'Erros',
+      data: [erradas2],
+      backgroundColor: 'red'}
+
   ]
 };
     

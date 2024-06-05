@@ -99,6 +99,15 @@ nav .agora a, nav a:hover{
     box-shadow: 0 0 10px 5px #00000048;
 }
 
+.footer-bottom {
+    background-color: #36451e;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+}
+
+
 .erro_cad{
     display: none;
     background-color: rgb(255, 208, 208);
@@ -612,17 +621,16 @@ background-color: #14C310;
 }
 
 .graficos{
-    display: flex;
+    padding: 20px;
     border-radius: 10px;
-    width: 5px;
-    height: 5px;
     background-color: #fff;
     color: #DFF3E4;
 }
 
 .div_graficopie{
+    padding: 20px;
     height: 500px; 
-    width: 500px;
+    width: 700px;
     color: #DFF3E4;
 }
 

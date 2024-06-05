@@ -58,6 +58,11 @@ nav a{
     color: #14C310;
 }
 
+a{
+    text-decoration: none;
+    color: #DFF3E4;
+}
+
 nav .agora a, nav a:hover{
     background-color: #14C310;
     color: #171738;
@@ -67,6 +72,65 @@ nav .agora a, nav a:hover{
     display: flex;
     align-items: center;
 }
+
+
+
+footer {
+    background-color: #7180B9;
+    color: #fff;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.footer-section {
+    padding: 20px;
+    flex: 1; /*validar*/
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-transform: uppercase; /*validar*/
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+
+.footer-section p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease; /*validar*/
+}
+
+.footer-section ul li a:hover {
+    color: #990000;
+}
+
+.footer-bottom{
+    text-align: center;
+}
+
 
 
 
@@ -275,4 +339,11 @@ flex-direction: column;
     padding: 15px;
   }
 
-  
+  .div_sobre_xmen{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    color: #DFF3E4;
+    align-items: center;
+    justify-content: center;
+  }
