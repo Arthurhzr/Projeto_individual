@@ -11,42 +11,34 @@ function obterDadosGrafico(fk_usuario) {
 }
 
 
-function obterDadosGrafico2(fk_usuario) {
+function obterDadosGrafico2() {
     
     var instrucaoSql = `
     select SUM(acertos) as 'acertos_gerais', SUM(erros) as 'erros_gerais' from pontuacao;
     `
     return database.executar(instrucaoSql);
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
 }
 
-
-function buscarMaiorMenorPontuacao(fk_usuario){
-    var instrucaoSql = `select max(acertos) as maior_acerto, min(acertos) as menor_acerto
-     from pontuacao where fk_usuario = ${fk_usuario};`
-     return database.executar(instrucaoSql);
-
-};
-
-
-function buscarMedidasEmTempoReal(idusuario) {
-    var idusuario = sessionStorage.ID_USUARIO;
-    var instrucaoSql = `SELECT 
-                        SUM(acertos), 
-                        SUM(erros)
-                        fk_usuario
-                        FROM pontuacao WHERE fk_usuario = ${idusuario} 
-                    ORDER BY id DESC LIMIT 1`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+function buscarPersonagem() {
+    
+    var instrucaoSql = `
+    SELECT COUNT(u.idusuario) AS numero_de_usuarios
+    FROM personagem p
+    LEFT JOIN usuario u ON p.idpersonagem = u.fk_personagem
+    GROUP BY p.idpersonagem, p.nome;
+    `
     return database.executar(instrucaoSql);
 }
+
+
+
+
+
 
 module.exports = {
     obterDadosGrafico,
     obterDadosGrafico2,
-    buscarMedidasEmTempoReal,
-    buscarMaiorMenorPontuacao
+    buscarPersonagem
 }
 
 /* SELECT 
