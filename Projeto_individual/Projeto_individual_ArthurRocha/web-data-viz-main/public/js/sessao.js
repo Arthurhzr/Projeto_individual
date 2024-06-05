@@ -4,6 +4,13 @@ function validarSessao() {
     var nome = sessionStorage.NOME_USUARIO;
     var iduser = sessionStorage.ID_USUARIO;
 
+    var nome_user = document.getElementById("nome_usuario");
+    if (email != null && nome != null) {
+        nome_user.innerHTML = nome;
+    } else {
+        window.location = "../login.html";
+    }
+
     var b_usuario = document.getElementById("nome_user");
 
     if (email != null && nome != null) {
@@ -12,11 +19,6 @@ function validarSessao() {
         window.location = "../login.html";
     }
 
-    if (email != null && nome != null && iduser != null) {
-        var b_idusuario = iduser;
-    } else {
-        window.location = "../quiz.html";
-    }
 }
 
 function limparSessao() {

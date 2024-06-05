@@ -10,7 +10,7 @@
     <script src="js/sessao.js" ></script>
     <script src="./../js/alerta.js"></script>
 </head>
-<body class="body_dash">
+<body onload="validarSessao()" class="body_dash">
 
     <header>
         <div class="container">
@@ -32,30 +32,37 @@
     <div id="div_conteudo_dash" class="div_conteudo2">
 
         <div id="div_centro" class="centro_dash">
-            <div id="btn_sair"></div>
+            <div id="btn_sair" class="sair"><img class="seta" src="imagens/logoff.png" alt=""> <b>Sair</b></div>
             <h1>Bem vindo as estatísticas do quiz!</h1> <h1>Aqui você pode ver acertos e erros tanto individuais como gerais</h1>
 
             <div id="div_individual" class="pnts_individuais">
                 <div onclick="abrir_individuais()" id="div_barra_individual" class="barra_individuais"><h2>Informações individuais:</h2> <img class="seta" src="imagens/seta_direita_clara.png" alt=""></div>
                 <div onclick="fechar_individuais()" id="div_barra_individual_opn" style="display: none;" class="barra_individuais"><h2>Informações individuais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
                 <div id="info_individuais" class="indivs">
-                    <h1>Gráfico dos seus acertos e erros totais:</h1>
+                    <h1>Gráfico dos acertos e erros totais de <span id="nome_usuario"></span>:</h1>
                     <canvas class="graficos" style="background-color: white;" id="grafico_erro_acerto_indiv"></canvas>
+                    <br>
+                    <br>
+                    <h1></h1>
 
+                </div>
                 </div>
 
                 <br>
 
-                <div id="div_individual" class="pnts_individuais">
-                    <div onclick="abrir_individuais()" id="div_barra_individual" class="barra_individuais"><h2>Informações gerais:</h2> <img class="seta" src="imagens/seta_direita_clara.png" alt=""></div>
-                    <div onclick="fechar_individuais()" id="div_barra_individual_opn" style="display: none;" class="barra_individuais"><h2>informações gerais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
+                <div id="div_geral" class="pnts_geral">
+                    <div onclick="abrir_gerais()" id="div_barra_geral" class="barra_individuais"><h2>Informações gerais:</h2> <img class="seta" src="imagens/seta_direita_clara.png" alt=""></div>
+                    <div onclick="fechar_gerais()" id="div_barra_geral_opn" style="display: none;" class="barra_individuais"><h2>informações gerais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
                     <div id="info_individuais" class="indivs">
                         <h1>Gráfico de favoritismo de personagens:</h1>
-                        <canvas class="graficos" id="grafico_personagens"></canvas>
-    
+                        <canvas class="grafico_pie" id="grafico_personagens"></canvas>
+                        <div id="div_maiormenor">
+                            <div id="maior"><span id="span_maior"></span></div>
+                            <div id="menor"><span id="span_menor"></span></div>
+                        </div>
                     </div>
 
-                    <div id="info_individuais" class="indivs">
+                    <div id="info_gerais" class="indivs">
                         <h1>Gráfico dos acertos e erros gerais:</h1>
                         <canvas class="graficos" id="grafico_erro_acerto_indiv"></canvas>
     
@@ -71,8 +78,10 @@
 </html>
 
 <script>
-
+    var nome_user = sessionStorage.NOME_USUARIO;
     var id_user = sessionStorage.ID_USUARIO;
+
+    nome_usuario.innerHTML = nome_user
 
     function abrir_individuais(){
         document.getElementById("div_barra_individual").style.display = "none";
@@ -86,50 +95,20 @@
         document.getElementById("info_individuais").style.display = "none";
     }
 
+    function abrir_gerais(){
+        document.getElementById("div_barra_geral").style.display = "none";
+        document.getElementById("div_barra_geral_opn").style.display = "flex";
+        document.getElementById("info_gerais").style.display = "flex";
+    }
+
+    function fechar_gerais(){
+        document.getElementById("div_barra_individual").style.display = "flex";
+        document.getElementById("div_barra_individual_opn").style.display = "none";
+        document.getElementById("info_gerais").style.display = "none";
+    }
+
 
     // grafico erros e acertos inividuais
-
-    const DATA_COUNT = 5;
-const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-
-const data = {
-  labels: [
-    'Erros',
-    'Acertos'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [300, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)'
-    ]
-  }]
-};
-
-const config = {
-  type: 'pie',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Pie Chart'
-      }
-    }
-  },
-};
-
-/* const canvas_mychart = new Chart(
-        document.getElementById('grafico_erro_acerto_ind'),
-        config
-    ); */
- 
-
 
 
 // PARTE DIFICIL -CONSEGUIR OS DADOS PRA DASH
@@ -148,21 +127,63 @@ const config = {
     var fk_usuario = sessionStorage.ID_USUARIO
 console.log(`${fk_usuario}`);
 
-    window.onload = obterDadosGrafico(); 
-    function obterDadosGrafico() {
+        window.onload = function() {
+        obterDadosGrafico();
+        buscarMaiorMenorPontuacao();
+    };
 
+    function buscarPersonagens(){
+
+}
+
+    function buscarMaiorMenorPontuacao(){
+
+        var fk_usuario = sessionStorage.ID_USUARIO
+var maior; 
+var menor;  
+
+fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dados recebidos:', data);
+
+                if (data) {
+                    var maior = data.map(item => item.maior_acerto);
+                    var menor = data.map(item => item.menor_acerto);
+                    console.log('Maior acerto:', maior);
+                    console.log('Menor acerto:', menor);
+
+                    document.getElementById('span_maior').innerText = `Maior acerto: ${maior}`;
+                    document.getElementById('span_menor').innerText = `Menor acerto: ${menor}`;
+                } else {
+                    console.error('Dados retornados são inválidos:', data);
+                }
+            })
+            .catch(error => console.error('Falha na captura de maior e menor nota', error));
+    }
+
+
+
+    function obterDadosGrafico() {
+""
 var fk_usuario = sessionStorage.ID_USUARIO
 console.log(`${fk_usuario}`);
 
+var corretas; 
+var erradas;   
+
 fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
-    .then(respose => respose.json())
+    .then(response => response.json())
     .then(data => {
-        console.log(data)
+        console.log(data);
 
-        var ctx = document.getElementById('grafico_erro_acerto_indiv').getContext('2d')
+        // Atribuição das variáveis dentro do callback
+        corretas = data.map(item => item.acertos);
+        erradas = data.map(item => item.erros);
+        console.log(corretas);
+        console.log(erradas);
 
-        var acertos = data.map(item => item.acertos)
-        var erros = data.map(item => item.erros)
+        var ctx = document.getElementById('grafico_erro_acerto_indiv').getContext('2d');
 
         const labels = [
         "Acertos e erros",
@@ -171,17 +192,18 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
     
 
     const charData = {
-  labels: ['Corretas', 'Erradas'],
+  labels: ['Acertos','Erros'],
   datasets: [
     {
       label: 'Dataset 1',
-      data: [acertos, erros],
-      backgroundColor: '#fff',
+      data: [corretas, erradas],
+      backgroundColor: ['red','#14C310'],
     }
   ]
 };
+    
         var config = {
-            type: 'bar',
+            type: 'pie',
             data: charData,
             options: {
                 scales: {
@@ -197,135 +219,6 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
         console.log(data)
     }).catch(error => console.error('Falha na captura de acertos', error))
 }
-
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
-// function plotarGrafico(resposta, fk_usuario) {
-
-// console.log('iniciando plotagem do gráfico...');
-
-// // Criando estrutura para plotar gráfico - labels
-// let labels = [];
-
-// // Criando estrutura para plotar gráfico - dados
-// let dados = {
-//     labels: ['Acertos', 'Erros'],
-//     datasets: [{
-//         label: 'Acertos',
-//         data: [],
-//         fill: false,
-//         borderColor: 'rgb(75, 192, 192)',
-//         tension: 0.1
-//     },
-//     {
-//         label: 'Erros',
-//         data: [],
-//         fill: false,
-//         borderColor: 'rgb(199, 52, 52)',
-//         tension: 0.1
-//     }]
-// };
-
-// console.log('----------------------------------------------')
-// console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-// console.log(resposta)
-
-// // Inserindo valores recebidos em estrutura para plotar o gráfico
-// for (i = 0; i < resposta.length; i++) {
-//     var registro = resposta[i];
-//     dados.datasets[0].data.push(pontuacao.acertos);
-//     dados.datasets[1].data.push(pontuacao.erros);
-// }
-
-// console.log('----------------------------------------------')
-// console.log('O gráfico será plotado com os respectivos valores:')
-// console.log('Labels:')
-// console.log(labels)
-// console.log('Dados:')
-// console.log(dados.datasets)
-// console.log('----------------------------------------------')
-
-// // Criando estrutura para plotar gráfico - config
-// const config = {
-//     type: 'bar',
-//     data: dados,
-// };
-
-// // Adicionando gráfico criado em div na tela
-// let myChart = new Chart(
-//     document.getElementById(`grafico_erro_acerto_indiv`),
-//     config
-// );
-
-// setTimeout(() => atualizarGrafico(idusuario, dados, myChart), 2000);
-// }
-
-
-// // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// // buscando a última medida inserida em tabela contendo as capturas, 
-
-// //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-// //     Para ajustar o "select", ajuste o comando sql em src/models
-// function atualizarGrafico(idusuario, dados, myChart) {
-
-
-
-// fetch(`/medidas/tempo-real/${idusuario}`, { cache: 'no-store' }).then(function (response) {
-//     if (response.ok) {
-//         response.json().then(function (novoRegistro) {
-
-//             obterdados(idusuario);
-//             // alertar(novoRegistro, idusuario);
-//             console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-//             console.log(`Dados atuais do gráfico:`);
-//             console.log(dados);
-
-//             let avisoCaptura = document.getElementById(`avisoCaptura${idusuario}`)
-//             avisoCaptura.innerHTML = ""
-
-
-//             if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-//                 console.log("---------------------------------------------------------------")
-//                 console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-//                 avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-//                 console.log("Horário do novo dado capturado:")
-//                 console.log(novoRegistro[0].momento_grafico)
-//                 console.log("Horário do último dado capturado:")
-//                 console.log(dados.labels[dados.labels.length - 1])
-//                 console.log("---------------------------------------------------------------")
-//             } else {
-//                 // tirando e colocando valores no gráfico
-//                 dados.labels.shift(); // apagar o primeiro
-//                 dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-//                 dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-//                 dados.datasets[0].data.push(novoRegistro[0].acertos); // incluir uma nova medida de umidade
-
-//                 dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-//                 dados.datasets[1].data.push(novoRegistro[0].erros); // incluir uma nova medida de temperatura
-
-//                 myChart.update();
-//             }
-
-//             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-//             proximaAtualizacao = setTimeout(() => atualizarGrafico(fk_usuario, dados, myChart), 2000);
-//         });
-//     } else {
-//         console.error('Nenhum dado encontrado ou erro na API');
-//         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-//         proximaAtualizacao = setTimeout(() => atualizarGrafico(fk_usuario, dados, myChart), 2000);
-//     }
-// })
-//     .catch(function (error) {
-//         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//     });
-
-// }
-
-
-
-
 
 
 

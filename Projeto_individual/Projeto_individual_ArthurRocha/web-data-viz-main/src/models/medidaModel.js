@@ -3,19 +3,20 @@ var database = require("../database/config");
 function obterDadosGrafico(fk_usuario) {
     
     var instrucaoSql = `
-    select SUM(acertos), SUM(erros) from pontuacao
+    select SUM(acertos) as 'acertos', SUM(erros) as 'erros' from pontuacao
 	where fk_usuario = ${fk_usuario};
     `
     return database.executar(instrucaoSql);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
 }
 
-function buscarMaiorMenorPontuacao(idusuario){
-    var idusuario = sessionStorage.ID_USUARIO;
-    var instrucaoSql = `select max(acertos) as maior_acerto, min(acertos) as menor_acertos
-     from pontuacao where fk_usuario = ${idusuario};`;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+function buscarMaiorMenorPontuacao(fk_usuario){
+    var instrucaoSql = `select max(acertos) as maior_acerto, min(acertos) as menor_acerto
+     from pontuacao where fk_usuario = ${fk_usuario};`
+     return database.executar(instrucaoSql);
+
+};
+
 
 function buscarMedidasEmTempoReal(idusuario) {
     var idusuario = sessionStorage.ID_USUARIO;
