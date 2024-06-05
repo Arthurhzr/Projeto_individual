@@ -610,7 +610,33 @@ background-color: #14C310;
     color: #0c0c1d;
 }
 
-.grafico_pie{
-    width: 50px;
-    height: 50px;
+.graficos{
+    display: flex;
+    border-radius: 10px;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    color: #DFF3E4;
+}
+
+.div_graficopie{
+    height: 500px; 
+    width: 500px;
+    color: #DFF3E4;
+}
+
+.divpai_grafico{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_errosacertos{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
 }

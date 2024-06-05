@@ -32,7 +32,7 @@
     <div id="div_conteudo_dash" class="div_conteudo2">
 
         <div id="div_centro" class="centro_dash">
-            <div id="btn_sair" class="sair"><img class="seta" src="imagens/logoff.png" alt=""> <b>Sair</b></div>
+            <div id="btn_sair" onclick="limparSessao()" class="sair"><img class="seta" src="imagens/logoff.png" alt=""> <b>Sair</b></div>
             <h1>Bem vindo as estatísticas do quiz!</h1> <h1>Aqui você pode ver acertos e erros tanto individuais como gerais</h1>
 
             <div id="div_individual" class="pnts_individuais">
@@ -40,7 +40,13 @@
                 <div onclick="fechar_individuais()" id="div_barra_individual_opn" style="display: none;" class="barra_individuais"><h2>Informações individuais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
                 <div id="info_individuais" class="indivs">
                     <h1>Gráfico dos acertos e erros totais de <span id="nome_usuario"></span>:</h1>
-                    <canvas class="graficos" style="background-color: white;" id="grafico_erro_acerto_indiv"></canvas>
+                    <div class="divpai_grafico">
+                    <div class="div_graficopie"><canvas class="graficos" id="grafico_erro_acerto_indiv"></canvas></div>
+                    <div class="div_errosacertos">
+                        <div class="info"> <h2 id="indiverros"></div>
+                        <div class="info"> <h2 id="indivacertos"></div>
+                    </div>
+                </div>
                     <br>
                     <br>
                     <h1></h1>
@@ -53,19 +59,14 @@
                 <div id="div_geral" class="pnts_geral">
                     <div onclick="abrir_gerais()" id="div_barra_geral" class="barra_individuais"><h2>Informações gerais:</h2> <img class="seta" src="imagens/seta_direita_clara.png" alt=""></div>
                     <div onclick="fechar_gerais()" id="div_barra_geral_opn" style="display: none;" class="barra_individuais"><h2>informações gerais:</h2> <img class="seta" src="imagens/seta_baixo_clara.png" alt=""></div> 
-                    <div id="info_individuais" class="indivs">
-                        <h1>Gráfico de favoritismo de personagens:</h1>
-                        <canvas class="grafico_pie" id="grafico_personagens"></canvas>
-                        <div id="div_maiormenor">
-                            <div id="maior"><span id="span_maior"></span></div>
-                            <div id="menor"><span id="span_menor"></span></div>
+                    <div id="info_gerais2" class="indivs">
+                        <h1>Gráfico dos acertos e erros gerais</span>:</h1>
+                        <div class="divpai_grafico">
+                        <div class="div_graficopie"><canvas class="graficos" id="grafico_erro_acerto_geral"></canvas></div>
+                        <div class="div_errosacertos">
+                            <div class="info"> <h2 id="indiverros2"></div>
+                            <div class="info"> <h2 id="indivacertos2"></div>
                         </div>
-                    </div>
-
-                    <div id="info_gerais" class="indivs">
-                        <h1>Gráfico dos acertos e erros gerais:</h1>
-                        <canvas class="graficos" id="grafico_erro_acerto_indiv"></canvas>
-    
                     </div>
 
         </div>
@@ -129,45 +130,19 @@ console.log(`${fk_usuario}`);
 
         window.onload = function() {
         obterDadosGrafico();
-        buscarMaiorMenorPontuacao();
-    };
+        obterDadosGrafico2();    };
 
     function buscarPersonagens(){
 
 }
 
-    function buscarMaiorMenorPontuacao(){
-
-        var fk_usuario = sessionStorage.ID_USUARIO
-var maior; 
-var menor;  
-
-fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Dados recebidos:', data);
-
-                if (data) {
-                    var maior = data.map(item => item.maior_acerto);
-                    var menor = data.map(item => item.menor_acerto);
-                    console.log('Maior acerto:', maior);
-                    console.log('Menor acerto:', menor);
-
-                    document.getElementById('span_maior').innerText = `Maior acerto: ${maior}`;
-                    document.getElementById('span_menor').innerText = `Menor acerto: ${menor}`;
-                } else {
-                    console.error('Dados retornados são inválidos:', data);
-                }
-            })
-            .catch(error => console.error('Falha na captura de maior e menor nota', error));
-    }
-
 
 
     function obterDadosGrafico() {
-""
+
 var fk_usuario = sessionStorage.ID_USUARIO
 console.log(`${fk_usuario}`);
+
 
 var corretas; 
 var erradas;   
@@ -178,7 +153,7 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
         console.log(data);
 
         // Atribuição das variáveis dentro do callback
-        corretas = data.map(item => item.acertos);
+        corretas = dat.map(item => item.acertos);
         erradas = data.map(item => item.erros);
         console.log(corretas);
         console.log(erradas);
@@ -188,6 +163,10 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
         const labels = [
         "Acertos e erros",
     ];
+
+    
+        indiverros.innerHTML = `Total de erros: ${erradas}`
+        indivacertos.innerHTML = `Total de acertos: ${corretas}`
 
     
 
@@ -206,12 +185,8 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
             type: 'pie',
             data: charData,
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+                responsive: true,
+                maintainAspectRatio: false}
         };
 
         new Chart(ctx, config);
@@ -221,5 +196,63 @@ fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
 }
 
 
+
+// grafico geral
+function obterDadosGrafico2() {
+
+var fk_usuario = sessionStorage.ID_USUARIO
+console.log(`${fk_usuario}`);
+
+
+var corretas2; 
+var erradas2;   
+
+fetch(`/medidas/ultimas/${fk_usuario}`, { cache: 'no-store' })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+
+        // Atribuição das variáveis dentro do callback
+        corretas2 = data.map(item => item.acertos);
+        erradas2 = data.map(item => item.erros);
+        console.log(corretas2);
+        console.log(erradas2);
+
+        var ctx2 = document.getElementById('grafico_erro_acerto_gerais').getContext('2d');
+
+        const labels = [
+        "Acertos e erros",
+    ];
+
+    
+        indiverros.innerHTML = `Total de erros: ${erradas2}`
+        indivacertos.innerHTML = `Total de acertos: ${corretas2}`
+
+    
+
+    const charData = {
+  labels: ['Acertos','Erros'],
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [corretas2, erradas2],
+      backgroundColor: ['red','#14C310'],
+    }
+  ]
+};
+    
+        var config2 = {
+            type: 'pie',
+            data: charData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false}
+        };
+
+        new Chart(ctx2, config2);
+
+        console.log(data)
+    }).catch(error => console.error('Falha na captura de acertos', error))
+}
 
 </script>

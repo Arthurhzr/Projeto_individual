@@ -8,6 +8,10 @@ router.get("/ultimas/:fk_usuario", function (req, res) {
 });
 
 router.get("/ultimas/:fk_usuario", function (req, res) {
+    medidaController.obterDadosGrafico2(req, res);
+});
+
+router.get("/ultimas/:fk_usuario", function (req, res) {
     medidaController.buscarMaiorMenorPontuacao(req, res);
 });
 

@@ -12,6 +12,18 @@ function obterDadosGrafico(req, res) {
 }
 
 
+function obterDadosGrafico2(req, res) {
+    var {fk_usuario} = req.params
+
+    medidaModel.obterDadosGrafico2(fk_usuario)
+        .then(result => res.status(200).json(result))
+        .catch(erro => {
+            console.error('Erro', erro.sqlMessage)
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
+
 function buscarPersonagens(req, res) {
 
     var {fk_usuario} = req.params
@@ -60,6 +72,7 @@ function buscarMedidasEmTempoReal(req, res) {
 
 module.exports = {
     obterDadosGrafico,
+    obterDadosGrafico2,
     buscarMedidasEmTempoReal,
     buscarMaiorMenorPontuacao
 }

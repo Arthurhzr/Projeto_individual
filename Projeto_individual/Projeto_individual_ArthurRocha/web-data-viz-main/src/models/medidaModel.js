@@ -10,6 +10,17 @@ function obterDadosGrafico(fk_usuario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 }
 
+
+function obterDadosGrafico2(fk_usuario) {
+    
+    var instrucaoSql = `
+    select SUM(acertos) as 'acertos_gerais', SUM(erros) as 'erros_gerais' from pontuacao;
+    `
+    return database.executar(instrucaoSql);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+}
+
+
 function buscarMaiorMenorPontuacao(fk_usuario){
     var instrucaoSql = `select max(acertos) as maior_acerto, min(acertos) as menor_acerto
      from pontuacao where fk_usuario = ${fk_usuario};`
@@ -33,6 +44,7 @@ function buscarMedidasEmTempoReal(idusuario) {
 
 module.exports = {
     obterDadosGrafico,
+    obterDadosGrafico2,
     buscarMedidasEmTempoReal,
     buscarMaiorMenorPontuacao
 }
